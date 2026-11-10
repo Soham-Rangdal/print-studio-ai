@@ -1,0 +1,20 @@
+# environments, engine, models (made by setup)
+.venv/
+engine/
+__pycache__/
+*.pyc
+
+# user data and machine settings
+jobs/
+settings.json
+.installed
+install.log
+
+# local design-tool state and large test outputs
+.impeccable/
+tests/smoke/
+tests/photos/
+tests/*.log
+
+# build output
+installer/Output/

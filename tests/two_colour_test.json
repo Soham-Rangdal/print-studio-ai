@@ -1,0 +1,7 @@
+[
+  {"command": "solid.box", "params": {"length": "40 mm", "width": "40 mm", "height": "6 mm", "corner": [-20, -20, 0], "body_name": "Base"}},
+  {"command": "solid.cylinder", "params": {"diameter": "20 mm", "height": "25 mm", "base": [0, 0, 6], "operation": "new_body", "body_name": "Tower"}},
+  {"command": "appearance.assign", "params": {"bodies": ["Base"], "color": "#1F5FA8"}},
+  {"command": "appearance.assign", "params": {"bodies": ["Tower"], "color": "#C0392B"}},
+  {"command": "file.save_mesh", "params": {"path": "D:/video-studio/print-agent/tests/two_colour_test.3mf", "format": "3mf", "objects": "body", "quality": "fine"}}
+]

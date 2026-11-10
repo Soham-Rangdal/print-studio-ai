@@ -1,0 +1,40 @@
+name: Build Setup.exe
+
+# Push a tag like v1.0.0 to build PrintStudio-Setup.exe and attach it to a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  setup-exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Inno Setup (if the runner doesn't have it)
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) { choco install innosetup -y --no-progress }
+
+      - name: Build
+        shell: pwsh
+        run: |
+          $v = if ($env:GITHUB_REF_TYPE -eq "tag") { $env:GITHUB_REF_NAME.TrimStart("v") } else { "0.0.0-dev" }
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DAppVersion=$v" installer\PrintStudio.iss
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PrintStudio-Setup
+          path: installer/Output/PrintStudio-Setup.exe
+
+      - name: Attach to the release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: installer/Output/PrintStudio-Setup.exe
+          generate_release_notes: true
