@@ -94,15 +94,8 @@ Options:
 
 ## How it works
 
-```
- idea ──► Gemma (Ollama) ──► Z-Image Turbo ──► pick a picture ─┐
- 1 or 4 photos ────────────────────────────────────────────────┼─► TRELLIS.2 / Pixal3D ─► shape + colours
- STL · 3MF · OBJ · GLB · PLY ──────────────────────────────────┘                              │
-                                                                                               ▼
-       Creality Print project ◄── 3MF writer ◄── colours → your 4 filaments ◄── make it printable
-       (+ STL, + STEP solid)        (painted triangles)    (Lab colour space,         (one solid, flat base,
-                                                            smoothing, no specks)       scale, checks)
-```
+<p align="center"><img src="docs/images/pipeline-flow.gif" width="900" alt="Print Studio pipeline: your idea, photos or 3D file go through generative AI steps (Gemma, Z-Image Turbo, TRELLIS.2 / Pixal3D) and classic algorithm steps (make printable, 4 filament colours), with three approvals by you, ending in a 3MF project for Creality Print and an optional STEP solid"><br>
+<sub>Amber: generative AI on your own GPU. Green: classic algorithms. Red: you approve.</sub></p>
 
 - **One model on the graphics card at a time.** The 3D engine runs in its own process. The language model
   is unloaded straight after each answer, so everything fits in 8 GB of VRAM.

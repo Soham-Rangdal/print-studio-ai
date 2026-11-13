@@ -40,6 +40,7 @@ Source: "..\templates\*"; DestDir: "{app}\templates"; Flags: recursesubdirs igno
 Source: "..\installer\install.ps1"; DestDir: "{app}\installer"; Flags: ignoreversion
 Source: "..\installer\prefetch.py"; DestDir: "{app}\installer"; Flags: ignoreversion
 Source: "..\installer\wangp_core.py"; DestDir: "{app}\installer"; Flags: ignoreversion
+Source: "..\installer\engine_check.py"; DestDir: "{app}\installer"; Flags: ignoreversion
 Source: "..\requirements.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\setup.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\README.md"; DestDir: "{app}"; Flags: ignoreversion

@@ -172,6 +172,11 @@ if ($WanGPDir) {
     }
     $settings.Remove("wangp_dir")
 }
+# pip can report a package as installed while its files are missing (a broken cached wheel): prove the engine
+# really starts, repairing missing modules, before calling it ready
+$env:PRINT_STUDIO_WANGP = $Engine
+& $AppPy (Join-Path $PSScriptRoot "engine_check.py")
+if ($LASTEXITCODE -ne 0) { Fail "The 3D engine is installed but doesn't start." }
 Info "3D engine ready."
 
 # ---------------------------------------------------------------- 5. the idea helper

@@ -1,8 +1,9 @@
 """Fallback install of WanGP's Python environment, used when WanGP's own 1-click installer stops.
 
 Its installer fails as a whole if one optional download fails (for example the face-tools wheels hosted on
-GitHub, which time out on some networks). This does the same steps, but skips the GitHub-hosted wheels (face
-and body features that Print Studio doesn't use) and tries each speed-up extra on its own.
+GitHub, which time out on some networks). This does the same steps, but skips the GitHub-hosted wheels and
+tries each speed-up extra on its own. Some of those wheels are still imported when the engine starts (for
+example smplfitter): engine_check.py, which setup runs next, installs any such module from PyPI instead.
 Run from the Wan2GP folder with Python 3.11:   py -3.11 <path>\\wangp_core.py
 """
 import json
