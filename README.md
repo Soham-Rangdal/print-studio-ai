@@ -80,6 +80,18 @@ Options:
 
 </details>
 
+<details>
+<summary><b>If setup stops</b></summary>
+
+- **"Read timed out" or "No matching distribution found"**: a download site (usually pypi.org) didn't
+  answer. Wait a while, or try another network, then run `setup.bat` in the install folder. Finished steps
+  are skipped.
+- **"No NVIDIA graphics card found"**: install or update the NVIDIA driver, then run setup again.
+- **Anything else**: everything setup printed is in `install.log` in the install folder. Please attach it
+  when you [open an issue](../../issues).
+
+</details>
+
 ## How it works
 
 ```
